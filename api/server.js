@@ -7,10 +7,10 @@ var mysql = require('mysql');
 var formidable = require('formidable');
 var fs = require('fs');
 var pool = mysql.createPool({
-    host: 'localhost',
-    user: 'root',
-    password: '',
-    database: 'myguide',
+    host: 'mysql-morraycage.alwaysdata.net',
+    user: '141511',
+    password: 'naruto75',
+    database: 'morraycage_myguide',
     connectionLimit: 10,
     multipleStatements: true
 });
