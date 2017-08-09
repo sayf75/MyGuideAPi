@@ -101,6 +101,39 @@ app.get('/users/:id', function (req, res) {
     });
 });
 
+
+// Get les guides
+app.get('/users/:id/:type', function (req, res) {
+    var type = req.params.type;
+    var guide = "guide";
+    
+    if (type == '')
+        return res.sendStatus(400);
+    pool.getConnection(function (err, conn) {
+        if (err) return res.sendStatus(400);
+
+        conn.query("SELECT * FROM users WHERE type = guide", type, function (err, results, fields) {
+            if (err) throw err;
+            var data = {
+                id: results[0].id,
+                type: results[0].type,
+                nom: results[0].nom,
+                prenom: results[0].prenom,
+                username: results[0].username,
+                email: results[0].email,
+                pays: results[0].pays,
+                ville: results[0].ville,
+                adresse: results[0].adresse,
+                postal: results[0].postal,
+                bourse: results[0].bourse,
+                disponibilite: results[0].disponibilite
+            }
+            return res.status(200).send(data);
+        });
+    });
+});
+
+
 // Inscription rapide
 app.post('/users/:username/:password/:email', function (req, res) {
     var data = {
