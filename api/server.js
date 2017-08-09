@@ -103,7 +103,7 @@ app.get('/users/:id', function (req, res) {
 
 
 // Get les guides
-app.get('/users/:id/:type', function (req, res) {
+app.get('/users/:type', function (req, res) {
     var type = req.params.type;
     var guide = "guide";
     
