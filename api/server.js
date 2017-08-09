@@ -103,8 +103,8 @@ app.get('/users/:username/:password', function (req, res) {
 
 
 // Get les guides
-app.get('/users/type/:id', function (req, res) {
-    var type = req.params.id;
+app.get('/users/type/:type', function (req, res) {
+    var type = req.params.type;
     
     if (type == '')
         return res.sendStatus(400);
