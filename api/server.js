@@ -71,40 +71,40 @@ app.get('/users/:username/:password', function (req, res) {
     });
 });
 
-// Get information depuis l'id
-// app.get('/users/:id', function (req, res) {
-//     var id = req.params.id;
+ //Get information depuis l'id
+ app.get('/users/:id', function (req, res) {
+     var id = req.params.id;
 
-//     if (id == '')
-//         return res.sendStatus(400);
-//     pool.getConnection(function (err, conn) {
-//         if (err) return res.sendStatus(400);
+     if (id == '')
+         return res.sendStatus(400);
+     pool.getConnection(function (err, conn) {
+         if (err) return res.sendStatus(400);
 
-//         conn.query("SELECT * FROM users WHERE id = ?", id, function (err, results, fields) {
-//             if (err) throw err;
-//             var data = {
-//                 id: results[0].id,
-//                 type: results[0].type,
-//                 nom: results[0].nom,
-//                 prenom: results[0].prenom,
-//                 username: results[0].username,
-//                 email: results[0].email,
-//                 pays: results[0].pays,
-//                 ville: results[0].ville,
-//                 adresse: results[0].adresse,
-//                 postal: results[0].postal,
-//                 bourse: results[0].bourse,
-//                 disponibilite: results[0].disponibilite
-//             }
-//             return res.status(200).send(data);
-//         });
-//     });
-// });
+         conn.query("SELECT * FROM users WHERE id = ?", id, function (err, results, fields) {
+             if (err) throw err;
+             var data = {
+                 id: results[0].id,
+                 type: results[0].type,
+                 nom: results[0].nom,
+                prenom: results[0].prenom,
+                 username: results[0].username,
+                 email: results[0].email,
+                 pays: results[0].pays,
+                 ville: results[0].ville,
+                 adresse: results[0].adresse,
+                 postal: results[0].postal,
+                 bourse: results[0].bourse,
+                 disponibilite: results[0].disponibilite
+             }
+             return res.status(200).send(data);
+         });
+     });
+ });
 
 
 // Get les guides
-app.get('/users/type', function (req, res) {
-    var type = req.params.type;
+app.get('/users/type/:id', function (req, res) {
+    var type = req.params.id;
     
     if (type == '')
         return res.sendStatus(400);
