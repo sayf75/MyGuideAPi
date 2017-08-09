@@ -103,15 +103,15 @@ app.get('/users/:username/:password', function (req, res) {
 
 
 // Get les guides
-app.get('/users/type/:type', function (req, res) {
-    var type = req.params.type;
+app.get('/users/type/:id', function (req, res) {
+    var type = req.params.id;
     
     if (type == '')
         return res.sendStatus(400);
     pool.getConnection(function (err, conn) {
         if (err) return res.sendStatus(400);
 
-        conn.query("SELECT * FROM users WHERE type = "+type, type, function (err, results, fields) {
+        conn.query("SELECT * FROM users WHERE type = 'guide'", type, function (err, results, fields) {
             if (err) throw err;
             return res.status(200).send(results);
         });
