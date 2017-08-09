@@ -132,7 +132,7 @@ app.get('/users', function (req, res) {
 //             }
     
 //                 counter++;
-            return res.status(200).send("results");
+            return res.status(200).send(results);
         });
     });
 });
